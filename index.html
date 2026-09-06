@@ -9,36 +9,66 @@
   <style>
     body {
       margin: 0;
-      padding: 35px 20px 60px;
+      padding: 30px 20px 60px;
       background-color: #ffffff;
-      color: #222222;
+      color: #222;
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
     }
 
     h1 {
       text-align: center;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: normal;
+      letter-spacing: 4px;
       margin-bottom: 20px;
-      letter-spacing: 3px;
     }
 
-    .button-area {
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      font-weight: normal;
+      margin-bottom: 30px;
+    }
+
+    .language {
       text-align: center;
       margin-bottom: 35px;
     }
 
-    button {
-      font-size: 16px;
+    .language button {
       padding: 8px 18px;
-      margin: 0 6px;
+      margin: 0 5px;
+      font-size: 15px;
       border: 1px solid #999;
-      background-color: white;
-      cursor: pointer;
+      background: white;
       border-radius: 6px;
+      cursor: pointer;
     }
 
-    .menu {
+    .top-menu {
+      max-width: 450px;
+      margin: 0 auto;
+    }
+
+    .select-button {
+      display: block;
+      width: 100%;
+      margin: 15px 0;
+      padding: 20px;
+      font-size: 20px;
+      font-family: inherit;
+      background: white;
+      border: 1px solid #999;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .select-button:hover {
+      background: #f5f5f5;
+    }
+
+    .menu-page {
+      display: none;
       max-width: 500px;
       margin: 0 auto;
     }
@@ -50,7 +80,7 @@
       margin-top: 35px;
       margin-bottom: 15px;
       padding-bottom: 7px;
-      border-bottom: 1px solid #aaaaaa;
+      border-bottom: 1px solid #aaa;
     }
 
     .item {
@@ -59,96 +89,278 @@
       line-height: 1.7;
       margin: 12px 0;
     }
+
+    .back-button {
+      display: block;
+      margin: 40px auto 0;
+      padding: 10px 25px;
+      font-size: 16px;
+      font-family: inherit;
+      background: white;
+      border: 1px solid #999;
+      border-radius: 6px;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
 
-  <h1>季節のおまかせコース</h1>
+  <h1>お品書き</h1>
 
-  <div class="button-area">
-    <button onclick="showJapanese()">日本語</button>
-    <button onclick="showEnglish()">English</button>
+  <div class="language">
+    <button onclick="setLanguage('jp')">日本語</button>
+    <button onclick="setLanguage('en')">English</button>
   </div>
 
-  <!-- 日本語 -->
-  <div id="jp" class="menu">
 
-    <div class="category">強肴</div>
-    <div class="item">蟹と菊花の煮浸し</div>
-    <div class="item">イチヂク胡麻クリーム和え</div>
+  <!-- 最初の画面 -->
+  <div id="home" class="top-menu">
 
-    <div class="category">茶碗蒸し</div>
-    <div class="item">白子の木の子餡掛けイクラのせ</div>
+    <div class="jp">
+      <button class="select-button" onclick="showMenu('course1')">
+        コース①
+      </button>
 
-    <div class="category">鮨</div>
-    <div class="item">イカ（炭塩）</div>
-    <div class="item">カツオ（高等葱ソース）</div>
-    <div class="item">貝（塩スダチ）</div>
-    <div class="item">生エビ（エビパウダー）</div>
-    <div class="item">島鮨</div>
+      <button class="select-button" onclick="showMenu('course2')">
+        コース②
+      </button>
 
-    <div class="category">焼き物</div>
-    <div class="item">秋鮭幽庵焼き</div>
+      <button class="select-button" onclick="showMenu('course3')">
+        コース③
+      </button>
 
-    <div class="category">鮨</div>
-    <div class="item">赤身</div>
-    <div class="item">中トロ</div>
-    <div class="item">白身の昆布〆</div>
-    <div class="item">コハダ</div>
-    <div class="item">トロタクおはぎ</div>
-    <div class="item">イクラの小丼（ウニ添え）</div>
-    <div class="item">玉子</div>
+      <button class="select-button" onclick="showMenu('drink')">
+        ドリンクメニュー
+      </button>
+    </div>
 
-    <div class="category">お椀</div>
+    <div class="en" style="display:none;">
+      <button class="select-button" onclick="showMenu('course1')">
+        Course 1
+      </button>
 
-    <div class="category">甘味</div>
+      <button class="select-button" onclick="showMenu('course2')">
+        Course 2
+      </button>
+
+      <button class="select-button" onclick="showMenu('course3')">
+        Course 3
+      </button>
+
+      <button class="select-button" onclick="showMenu('drink')">
+        Drinks
+      </button>
+    </div>
+
   </div>
 
-  <!-- 英語 -->
-  <div id="en" class="menu" style="display: none;">
 
-    <div class="category">Appetizer</div>
-    <div class="item">Simmered Crab and Chrysanthemum</div>
-    <div class="item">Fresh Fig with Sesame Cream</div>
+  <!-- コース① -->
+  <div id="course1" class="menu-page">
 
-    <div class="category">Chawanmushi</div>
-    <div class="item">Steamed Egg Custard with Shirako, Mushroom Ankake Sauce, and Salmon Roe</div>
+    <div class="jp">
 
-    <div class="category">Sushi</div>
-    <div class="item">Squid (Charcoal Salt)</div>
-    <div class="item">Bonito (Green Onion Sauce)</div>
-    <div class="item">Shellfish (Salt and Sudachi)</div>
-    <div class="item">Fresh Shrimp (Shrimp Powder)</div>
-    <div class="item">Island-style Sushi</div>
+      <h2>コース①</h2>
 
-    <div class="category">Grilled Dish</div>
-    <div class="item">Yuan-style Grilled Autumn Salmon</div>
+      <div class="category">強肴</div>
+      <div class="item">蟹と菊花の煮浸し</div>
+      <div class="item">イチヂク胡麻クリーム和え</div>
 
-    <div class="category">Sushi</div>
-    <div class="item">Lean Tuna</div>
-    <div class="item">Medium Fatty Tuna</div>
-    <div class="item">White Fish Cured with Kelp</div>
-    <div class="item">Gizzard Shad</div>
-    <div class="item">Toro-Taku Ohagi</div>
-    <div class="item">Mini Salmon Roe Rice Bowl with Sea Urchin</div>
-    <div class="item">Japanese Omelet</div>
+      <div class="category">茶碗蒸し</div>
+      <div class="item">白子の木の子餡掛けイクラのせ</div>
 
-    <div class="category">Soup</div>
+      <div class="category">鮨</div>
+      <div class="item">イカ（炭塩）</div>
+      <div class="item">カツオ（高等葱ソース）</div>
+      <div class="item">貝（塩スダチ）</div>
+      <div class="item">生エビ（エビパウダー）</div>
+      <div class="item">島鮨</div>
 
-    <div class="category">Dessert</div>
+      <div class="category">焼き物</div>
+      <div class="item">秋鮭幽庵焼き</div>
+
+      <div class="category">鮨</div>
+      <div class="item">赤身</div>
+      <div class="item">中トロ</div>
+      <div class="item">白身の昆布〆</div>
+      <div class="item">コハダ</div>
+      <div class="item">トロタクおはぎ</div>
+      <div class="item">イクラの小丼（ウニ添え）</div>
+      <div class="item">玉子</div>
+
+      <div class="category">お椀</div>
+
+      <div class="category">甘味</div>
+
+    </div>
+
+
+    <div class="en" style="display:none;">
+
+      <h2>Course 1</h2>
+
+      <div class="category">Appetizers</div>
+      <div class="item">Simmered Crab and Chrysanthemum</div>
+      <div class="item">Fresh Fig with Sesame Cream</div>
+
+      <div class="category">Chawanmushi</div>
+      <div class="item">
+        Steamed Egg Custard with Shirako, Mushroom Sauce and Salmon Roe
+      </div>
+
+      <div class="category">Sushi</div>
+      <div class="item">Squid (Charcoal Salt)</div>
+      <div class="item">Bonito (Green Onion Sauce)</div>
+      <div class="item">Shellfish (Salt and Sudachi)</div>
+      <div class="item">Fresh Shrimp (Shrimp Powder)</div>
+      <div class="item">Island-style Sushi</div>
+
+      <div class="category">Grilled Dish</div>
+      <div class="item">Yuan-style Grilled Autumn Salmon</div>
+
+      <div class="category">Sushi</div>
+      <div class="item">Lean Tuna</div>
+      <div class="item">Medium Fatty Tuna</div>
+      <div class="item">Kelp-cured White Fish</div>
+      <div class="item">Gizzard Shad</div>
+      <div class="item">Toro-Taku Ohagi</div>
+      <div class="item">Salmon Roe Rice Bowl with Sea Urchin</div>
+      <div class="item">Japanese Omelet</div>
+
+      <div class="category">Soup</div>
+
+      <div class="category">Dessert</div>
+
+    </div>
+
+    <button class="back-button" onclick="goHome()">← 戻る / Back</button>
   </div>
+
+
+  <!-- コース② -->
+  <div id="course2" class="menu-page">
+
+    <div class="jp">
+      <h2>コース②</h2>
+
+      <div class="category">お品書き</div>
+      <div class="item">ここにコース②を入力</div>
+    </div>
+
+    <div class="en" style="display:none;">
+      <h2>Course 2</h2>
+
+      <div class="category">Menu</div>
+      <div class="item">Course 2 menu will be shown here.</div>
+    </div>
+
+    <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+  </div>
+
+
+  <!-- コース③ -->
+  <div id="course3" class="menu-page">
+
+    <div class="jp">
+      <h2>コース③</h2>
+
+      <div class="category">お品書き</div>
+      <div class="item">ここにコース③を入力</div>
+    </div>
+
+    <div class="en" style="display:none;">
+      <h2>Course 3</h2>
+
+      <div class="category">Menu</div>
+      <div class="item">Course 3 menu will be shown here.</div>
+    </div>
+
+    <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+  </div>
+
+
+  <!-- ドリンク -->
+  <div id="drink" class="menu-page">
+
+    <div class="jp">
+      <h2>ドリンクメニュー</h2>
+
+      <div class="category">ビール</div>
+      <div class="item">ここにドリンクを入力</div>
+
+      <div class="category">日本酒</div>
+      <div class="item">ここにドリンクを入力</div>
+
+      <div class="category">ソフトドリンク</div>
+      <div class="item">ここにドリンクを入力</div>
+    </div>
+
+    <div class="en" style="display:none;">
+      <h2>Drinks</h2>
+
+      <div class="category">Beer</div>
+      <div class="item">Drinks will be shown here.</div>
+
+      <div class="category">Sake</div>
+      <div class="item">Drinks will be shown here.</div>
+
+      <div class="category">Soft Drinks</div>
+      <div class="item">Drinks will be shown here.</div>
+    </div>
+
+    <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+  </div>
+
 
   <script>
-    function showJapanese() {
-      document.getElementById("jp").style.display = "block";
-      document.getElementById("en").style.display = "none";
+
+    let currentLanguage = "jp";
+
+    function setLanguage(language) {
+
+      currentLanguage = language;
+
+      document.querySelectorAll(".jp").forEach(function(element) {
+        element.style.display = language === "jp" ? "block" : "none";
+      });
+
+      document.querySelectorAll(".en").forEach(function(element) {
+        element.style.display = language === "en" ? "block" : "none";
+      });
+
     }
 
-    function showEnglish() {
-      document.getElementById("jp").style.display = "none";
-      document.getElementById("en").style.display = "block";
+
+    function showMenu(menuId) {
+
+      document.getElementById("home").style.display = "none";
+
+      document.querySelectorAll(".menu-page").forEach(function(menu) {
+        menu.style.display = "none";
+      });
+
+      document.getElementById(menuId).style.display = "block";
+
+      setLanguage(currentLanguage);
+
+      window.scrollTo(0, 0);
     }
+
+
+    function goHome() {
+
+      document.querySelectorAll(".menu-page").forEach(function(menu) {
+        menu.style.display = "none";
+      });
+
+      document.getElementById("home").style.display = "block";
+
+      setLanguage(currentLanguage);
+
+      window.scrollTo(0, 0);
+    }
+
   </script>
 
 </body>
