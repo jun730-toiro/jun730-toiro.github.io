@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お品書き</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Yu Mincho", serif;
+      background-color: white;
+    }
+
+    h1 {
+      font-size: 30px;
+      font-weight: normal;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>季節のおまかせコース-1</h1>
+
+</body>
+
+</html>
