@@ -4,1139 +4,562 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>お品書き</title>
+  <title>鮨 といろ お品書き</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      padding: 30px 20px 60px;
-      background-color: #ffffff;
-      color: #222;
+      background:
+        linear-gradient(to bottom, #050814 0%, #0b1020 45%, #111827 100%);
+      color: #f8f2e8;
       font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      padding-top: 170px;
+      padding-bottom: 60px;
+    }
+
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(3, 6, 15, 0.96);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.45);
+      z-index: 1000;
+      text-align: center;
+      padding: 18px 16px 16px;
+      backdrop-filter: blur(6px);
+    }
+
+    .header::after {
+      content: "";
+      display: block;
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(to right, transparent, #d4af37, transparent);
+      margin: 12px auto 0;
+    }
+
+    .logo {
+      width: 90px;
+      max-width: 40%;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
+    .shop-name {
+      font-size: 14px;
+      letter-spacing: 3px;
+      color: #d4af37;
+      margin-bottom: 10px;
+    }
+
+    .language {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .language button {
+      padding: 8px 18px;
+      font-size: 14px;
+      font-family: inherit;
+      color: #f8f2e8;
+      background: transparent;
+      border: 1px solid #8f7440;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .language button:hover {
+      background: rgba(212, 175, 55, 0.12);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(212, 175, 55, 0.30);
+      border-radius: 16px;
+      padding: 24px 18px 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
     }
 
     h1 {
       text-align: center;
-      font-size: 30px;
+      font-size: 28px;
       font-weight: normal;
       letter-spacing: 4px;
-      margin-bottom: 15px;
+      margin: 0 0 24px;
+      color: #f8f2e8;
     }
 
     h2 {
       text-align: center;
-      font-size: 25px;
+      font-size: 24px;
       font-weight: normal;
-      margin-bottom: 5px;
+      margin: 0 0 8px;
+      letter-spacing: 2px;
+      color: #f8f2e8;
     }
 
     .price {
       text-align: center;
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
-
-    .language {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .language button {
-      padding: 9px 20px;
-      margin: 0 5px;
-      font-size: 15px;
-      border: 1px solid #999;
-      background: white;
-      border-radius: 6px;
-      cursor: pointer;
+      font-size: 19px;
+      color: #d4af37;
+      margin-bottom: 28px;
     }
 
     .top-menu {
-      max-width: 450px;
+      max-width: 460px;
       margin: 0 auto;
     }
 
     .select-button {
       display: block;
       width: 100%;
-      margin: 16px 0;
-      padding: 22px 15px;
-      font-size: 20px;
+      margin: 14px 0;
+      padding: 18px 14px;
+      font-size: 19px;
       font-family: inherit;
-      background: white;
-      border: 1px solid #999;
-      border-radius: 8px;
+      color: #f8f2e8;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 12px;
       cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .select-button:hover {
+      background: rgba(212, 175, 55, 0.10);
+      transform: translateY(-1px);
     }
 
     .menu-page {
       display: none;
-      max-width: 500px;
-      margin: 0 auto;
     }
 
     .category {
       text-align: center;
-      font-size: 20px;
+      font-size: 19px;
       font-weight: bold;
-      margin-top: 35px;
+      color: #d4af37;
+      margin-top: 32px;
       margin-bottom: 14px;
-      padding-bottom: 7px;
-      border-bottom: 1px solid #aaa;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+      letter-spacing: 2px;
     }
 
     .item {
       text-align: center;
-      font-size: 18px;
-      line-height: 1.7;
-      margin: 12px 0;
+      font-size: 17px;
+      line-height: 1.9;
+      margin: 10px 0;
+      color: #f5eee2;
     }
 
     .special-item {
       text-align: center;
-      font-size: 19px;
-      margin: 32px 0 15px;
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 28px 0 12px;
+      color: #f8f2e8;
       font-weight: bold;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 14px;
+      color: #cfc2a5;
+      margin-top: 6px;
     }
 
     .back-button {
       display: block;
-      margin: 45px auto 0;
-      padding: 11px 28px;
-      font-size: 16px;
+      margin: 40px auto 0;
+      padding: 10px 26px;
+      font-size: 15px;
       font-family: inherit;
-      background: white;
-      border: 1px solid #999;
-      border-radius: 6px;
+      color: #f8f2e8;
+      background: transparent;
+      border: 1px solid #8f7440;
+      border-radius: 999px;
       cursor: pointer;
     }
 
-  </style>
+    .back-button:hover {
+      background: rgba(212, 175, 55, 0.12);
+    }
 
+    .footer-space {
+      height: 10px;
+    }
+  </style>
 </head>
 
 <body>
 
+  <div class="header">
+    <img src="logo.png" alt="鮨 といろ ロゴ" class="logo">
+    <div class="shop-name">SUSHI TOIRO</div>
 
-  <h1>お品書き</h1>
-
-
-  <!-- 言語切り替え -->
-
-  <div class="language">
-
-    <button onclick="setLanguage('jp')">
-      日本語
-    </button>
-
-    <button onclick="setLanguage('en')">
-      English
-    </button>
-
+    <div class="language">
+      <button onclick="setLanguage('jp')">日本語</button>
+      <button onclick="setLanguage('en')">English</button>
+    </div>
   </div>
 
+  <div class="container">
+    <div class="panel">
 
+      <!-- 最初の画面 -->
+      <div id="home" class="top-menu">
+        <div class="jp">
+          <h1>お品書き</h1>
 
-  <!-- 最初の画面 -->
+          <button class="select-button" onclick="showMenu('course9900')">9,900円コース</button>
+          <button class="select-button" onclick="showMenu('course13900')">13,900円コース</button>
+          <button class="select-button" onclick="showMenu('course16900')">16,900円コース</button>
+          <button class="select-button" onclick="showMenu('drink')">ドリンクメニュー</button>
+        </div>
 
-  <div id="home" class="top-menu">
+        <div class="en" style="display:none;">
+          <h1>Menu</h1>
 
+          <button class="select-button" onclick="showMenu('course9900')">¥9,900 Course</button>
+          <button class="select-button" onclick="showMenu('course13900')">¥13,900 Course</button>
+          <button class="select-button" onclick="showMenu('course16900')">¥16,900 Course</button>
+          <button class="select-button" onclick="showMenu('drink')">Drinks</button>
+        </div>
+      </div>
 
-    <div class="jp">
+      <!-- 9900円コース -->
+      <div id="course9900" class="menu-page">
 
-      <button class="select-button"
-              onclick="showMenu('course9900')">
+        <div class="jp">
+          <h2>9月のコース</h2>
+          <div class="price">9,900円</div>
 
-        9,900円コース
+          <div class="category">強肴</div>
+          <div class="item">蟹と菊花の煮浸し</div>
+          <div class="item">イチヂク胡麻クリーム和え</div>
 
-      </button>
+          <div class="category">茶碗蒸し</div>
+          <div class="item">白子の木の子餡掛けイクラのせ</div>
 
+          <div class="category">鮨</div>
+          <div class="item">イカ（炭塩）</div>
+          <div class="item">カツオ（高等葱ソース）</div>
+          <div class="item">貝（塩スダチ）</div>
+          <div class="item">生エビ（エビパウダー）</div>
+          <div class="item">島鮨</div>
 
-      <button class="select-button"
-              onclick="showMenu('course13900')">
+          <div class="category">焼き物</div>
+          <div class="item">秋鮭幽庵焼き</div>
 
-        13,900円コース
+          <div class="category">鮨</div>
+          <div class="item">赤身</div>
+          <div class="item">中トロ</div>
+          <div class="item">白身の昆布〆</div>
+          <div class="item">コハダ</div>
+          <div class="item">トロタクおはぎ</div>
+          <div class="item">イクラの小丼（ウニ添え）</div>
+          <div class="item">玉子</div>
 
-      </button>
+          <div class="category">お椀</div>
+          <div class="category">甘味</div>
+        </div>
 
+        <div class="en" style="display:none;">
+          <h2>September Course</h2>
+          <div class="price">¥9,900</div>
 
-      <button class="select-button"
-              onclick="showMenu('course16900')">
+          <div class="category">Appetizers</div>
+          <div class="item">Simmered Crab and Chrysanthemum</div>
+          <div class="item">Fig with Sesame Cream</div>
 
-        16,900円コース
+          <div class="category">Chawanmushi</div>
+          <div class="item">Steamed Egg Custard with Shirako, Mushroom Sauce and Salmon Roe</div>
 
-      </button>
+          <div class="category">Sushi</div>
+          <div class="item">Squid (Charcoal Salt)</div>
+          <div class="item">Bonito (Green Onion Sauce)</div>
+          <div class="item">Shellfish (Salt and Sudachi)</div>
+          <div class="item">Fresh Shrimp (Shrimp Powder)</div>
+          <div class="item">Island-style Sushi</div>
 
+          <div class="category">Grilled Dish</div>
+          <div class="item">Yuan-style Grilled Autumn Salmon</div>
 
-      <button class="select-button"
-              onclick="showMenu('drink')">
+          <div class="category">Sushi</div>
+          <div class="item">Lean Tuna</div>
+          <div class="item">Medium Fatty Tuna</div>
+          <div class="item">Kelp-cured White Fish</div>
+          <div class="item">Gizzard Shad</div>
+          <div class="item">Toro-Taku Ohagi</div>
+          <div class="item">Mini Salmon Roe Rice Bowl with Sea Urchin</div>
+          <div class="item">Japanese Omelet</div>
 
-        ドリンクメニュー
+          <div class="category">Soup</div>
+          <div class="category">Dessert</div>
+        </div>
 
-      </button>
+        <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+      </div>
 
+      <!-- 13900円コース -->
+      <div id="course13900" class="menu-page">
+
+        <div class="jp">
+          <h2>9月のコース</h2>
+          <div class="price">13,900円</div>
+
+          <div class="special-item">ウニ食べ比べ</div>
+
+          <div class="category">強肴</div>
+          <div class="item">蟹と菊花の煮浸し</div>
+          <div class="item">イチヂク胡麻クリーム和え</div>
+
+          <div class="category">茶碗蒸し</div>
+          <div class="item">白子の木の子餡掛けイクラのせ</div>
+
+          <div class="category">鮨</div>
+          <div class="item">イカ（炭塩）</div>
+          <div class="item">カツオ（高等葱ソース）</div>
+          <div class="item">貝（塩スダチ）</div>
+          <div class="item">生エビ（エビパウダー）</div>
+          <div class="item">島鮨</div>
+
+          <div class="category">焼き物</div>
+          <div class="item">秋鮭幽庵焼き</div>
+
+          <div class="category">揚げ物</div>
+          <div class="item">鱧の天麩羅</div>
+
+          <div class="category">香の物</div>
+
+          <div class="category">鮨</div>
+          <div class="item">赤身</div>
+          <div class="item">中トロ</div>
+          <div class="item">白身の昆布〆</div>
+          <div class="item">コハダ</div>
+          <div class="item">トロタクおはぎ</div>
+          <div class="item">穴子</div>
+          <div class="item">玉子</div>
+
+          <div class="category">お椀</div>
+          <div class="category">甘味</div>
+        </div>
+
+        <div class="en" style="display:none;">
+          <h2>September Course</h2>
+          <div class="price">¥13,900</div>
+
+          <div class="special-item">Sea Urchin Tasting</div>
+
+          <div class="category">Appetizers</div>
+          <div class="item">Simmered Crab and Chrysanthemum</div>
+          <div class="item">Fig with Sesame Cream</div>
+
+          <div class="category">Chawanmushi</div>
+          <div class="item">Steamed Egg Custard with Shirako, Mushroom Sauce and Salmon Roe</div>
+
+          <div class="category">Sushi</div>
+          <div class="item">Squid (Charcoal Salt)</div>
+          <div class="item">Bonito (Green Onion Sauce)</div>
+          <div class="item">Shellfish (Salt and Sudachi)</div>
+          <div class="item">Fresh Shrimp (Shrimp Powder)</div>
+          <div class="item">Island-style Sushi</div>
+
+          <div class="category">Grilled Dish</div>
+          <div class="item">Yuan-style Grilled Autumn Salmon</div>
+
+          <div class="category">Tempura</div>
+          <div class="item">Conger Pike Tempura</div>
+
+          <div class="category">Pickles</div>
+
+          <div class="category">Sushi</div>
+          <div class="item">Lean Tuna</div>
+          <div class="item">Medium Fatty Tuna</div>
+          <div class="item">Kelp-cured White Fish</div>
+          <div class="item">Gizzard Shad</div>
+          <div class="item">Toro-Taku Ohagi</div>
+          <div class="item">Conger Eel</div>
+          <div class="item">Japanese Omelet</div>
+
+          <div class="category">Soup</div>
+          <div class="category">Dessert</div>
+        </div>
+
+        <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+      </div>
+
+      <!-- 16900円コース -->
+      <div id="course16900" class="menu-page">
+
+        <div class="jp">
+          <h2>9月のコース</h2>
+          <div class="price">16,900円</div>
+
+          <div class="special-item">ウニ食べ比べ</div>
+
+          <div class="category">強肴</div>
+          <div class="item">蟹と菊花の煮浸し</div>
+          <div class="item">イチヂク胡麻クリーム和え</div>
+
+          <div class="category">茶碗蒸し</div>
+          <div class="item">白子の木の子餡掛けイクラのせ</div>
+
+          <div class="category">鮨</div>
+          <div class="item">イカ（炭塩）</div>
+          <div class="item">カツオ（高等葱ソース）</div>
+          <div class="item">貝（塩スダチ）</div>
+          <div class="item">生エビ（エビパウダー）</div>
+          <div class="item">島鮨</div>
+
+          <div class="category">焼き物</div>
+          <div class="item">秋鮭幽庵焼き</div>
+
+          <div class="category">揚げ物</div>
+          <div class="item">鱧の天麩羅</div>
+
+          <div class="special-item">鮑の酒蒸し 肝ソース</div>
+
+          <div class="category">香の物</div>
+
+          <div class="category">鮨</div>
+          <div class="item">赤身</div>
+          <div class="item">中トロ</div>
+          <div class="item">白身の昆布〆</div>
+          <div class="item">コハダ</div>
+          <div class="item">トロタクおはぎ</div>
+          <div class="item">穴子</div>
+          <div class="item">玉子</div>
+
+          <div class="category">お椀</div>
+          <div class="category">甘味</div>
+        </div>
+
+        <div class="en" style="display:none;">
+          <h2>September Course</h2>
+          <div class="price">¥16,900</div>
+
+          <div class="special-item">Sea Urchin Tasting</div>
+
+          <div class="category">Appetizers</div>
+          <div class="item">Simmered Crab and Chrysanthemum</div>
+          <div class="item">Fig with Sesame Cream</div>
+
+          <div class="category">Chawanmushi</div>
+          <div class="item">Steamed Egg Custard with Shirako, Mushroom Sauce and Salmon Roe</div>
+
+          <div class="category">Sushi</div>
+          <div class="item">Squid (Charcoal Salt)</div>
+          <div class="item">Bonito (Green Onion Sauce)</div>
+          <div class="item">Shellfish (Salt and Sudachi)</div>
+          <div class="item">Fresh Shrimp (Shrimp Powder)</div>
+          <div class="item">Island-style Sushi</div>
+
+          <div class="category">Grilled Dish</div>
+          <div class="item">Yuan-style Grilled Autumn Salmon</div>
+
+          <div class="category">Tempura</div>
+          <div class="item">Conger Pike Tempura</div>
+
+          <div class="special-item">Sake-steamed Abalone with Liver Sauce</div>
+
+          <div class="category">Pickles</div>
+
+          <div class="category">Sushi</div>
+          <div class="item">Lean Tuna</div>
+          <div class="item">Medium Fatty Tuna</div>
+          <div class="item">Kelp-cured White Fish</div>
+          <div class="item">Gizzard Shad</div>
+          <div class="item">Toro-Taku Ohagi</div>
+          <div class="item">Conger Eel</div>
+          <div class="item">Japanese Omelet</div>
+
+          <div class="category">Soup</div>
+          <div class="category">Dessert</div>
+        </div>
+
+        <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+      </div>
+
+      <!-- ドリンク -->
+      <div id="drink" class="menu-page">
+
+        <div class="jp">
+          <h2>ドリンクメニュー</h2>
+          <div class="category">ドリンク</div>
+          <div class="item">ドリンクメニュー準備中</div>
+          <div class="note">後から日本酒・ビール・ソフトドリンクなど追加できます</div>
+        </div>
+
+        <div class="en" style="display:none;">
+          <h2>Drinks</h2>
+          <div class="category">Drinks</div>
+          <div class="item">Drink menu coming soon</div>
+          <div class="note">Beer, sake and soft drinks can be added later</div>
+        </div>
+
+        <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+      </div>
+
+      <div class="footer-space"></div>
     </div>
-
-
-
-    <div class="en" style="display:none;">
-
-      <button class="select-button"
-              onclick="showMenu('course9900')">
-
-        ¥9,900 Course
-
-      </button>
-
-
-      <button class="select-button"
-              onclick="showMenu('course13900')">
-
-        ¥13,900 Course
-
-      </button>
-
-
-      <button class="select-button"
-              onclick="showMenu('course16900')">
-
-        ¥16,900 Course
-
-      </button>
-
-
-      <button class="select-button"
-              onclick="showMenu('drink')">
-
-        Drinks
-
-      </button>
-
-    </div>
-
   </div>
-
-
-
-  <!-- ====================== -->
-  <!-- 9900円コース -->
-  <!-- ====================== -->
-
-  <div id="course9900" class="menu-page">
-
-
-    <!-- 日本語 -->
-
-    <div class="jp">
-
-      <h2>9月のコース</h2>
-      <div class="price">9,900円</div>
-
-
-      <div class="category">強肴</div>
-
-      <div class="item">
-        蟹と菊花の煮浸し
-      </div>
-
-      <div class="item">
-        イチヂク胡麻クリーム和え
-      </div>
-
-
-      <div class="category">
-        茶碗蒸し
-      </div>
-
-      <div class="item">
-        白子の木の子餡掛けイクラのせ
-      </div>
-
-
-      <div class="category">
-        鮨
-      </div>
-
-      <div class="item">
-        イカ（炭塩）
-      </div>
-
-      <div class="item">
-        カツオ（高等葱ソース）
-      </div>
-
-      <div class="item">
-        貝（塩スダチ）
-      </div>
-
-      <div class="item">
-        生エビ（エビパウダー）
-      </div>
-
-      <div class="item">
-        島鮨
-      </div>
-
-
-      <div class="category">
-        焼き物
-      </div>
-
-      <div class="item">
-        秋鮭幽庵焼き
-      </div>
-
-
-      <div class="category">
-        鮨
-      </div>
-
-      <div class="item">
-        赤身
-      </div>
-
-      <div class="item">
-        中トロ
-      </div>
-
-      <div class="item">
-        白身の昆布〆
-      </div>
-
-      <div class="item">
-        コハダ
-      </div>
-
-      <div class="item">
-        トロタクおはぎ
-      </div>
-
-      <div class="item">
-        イクラの小丼（ウニ添え）
-      </div>
-
-      <div class="item">
-        玉子
-      </div>
-
-
-      <div class="category">
-        お椀
-      </div>
-
-
-      <div class="category">
-        甘味
-      </div>
-
-    </div>
-
-
-
-    <!-- English -->
-
-    <div class="en" style="display:none;">
-
-      <h2>September Course</h2>
-      <div class="price">¥9,900</div>
-
-
-      <div class="category">
-        Appetizers
-      </div>
-
-      <div class="item">
-        Simmered Crab and Chrysanthemum
-      </div>
-
-      <div class="item">
-        Fig with Sesame Cream
-      </div>
-
-
-      <div class="category">
-        Chawanmushi
-      </div>
-
-      <div class="item">
-        Steamed Egg Custard with Shirako,
-        Mushroom Sauce and Salmon Roe
-      </div>
-
-
-      <div class="category">
-        Sushi
-      </div>
-
-      <div class="item">
-        Squid (Charcoal Salt)
-      </div>
-
-      <div class="item">
-        Bonito (Green Onion Sauce)
-      </div>
-
-      <div class="item">
-        Shellfish (Salt and Sudachi)
-      </div>
-
-      <div class="item">
-        Fresh Shrimp (Shrimp Powder)
-      </div>
-
-      <div class="item">
-        Island-style Sushi
-      </div>
-
-
-      <div class="category">
-        Grilled Dish
-      </div>
-
-      <div class="item">
-        Yuan-style Grilled Autumn Salmon
-      </div>
-
-
-      <div class="category">
-        Sushi
-      </div>
-
-      <div class="item">
-        Lean Tuna
-      </div>
-
-      <div class="item">
-        Medium Fatty Tuna
-      </div>
-
-      <div class="item">
-        Kelp-cured White Fish
-      </div>
-
-      <div class="item">
-        Gizzard Shad
-      </div>
-
-      <div class="item">
-        Toro-Taku Ohagi
-      </div>
-
-      <div class="item">
-        Mini Salmon Roe Rice Bowl
-        with Sea Urchin
-      </div>
-
-      <div class="item">
-        Japanese Omelet
-      </div>
-
-
-      <div class="category">
-        Soup
-      </div>
-
-
-      <div class="category">
-        Dessert
-      </div>
-
-    </div>
-
-
-    <button class="back-button"
-            onclick="goHome()">
-
-      ← 戻る / Back
-
-    </button>
-
-  </div>
-
-
-
-  <!-- ====================== -->
-  <!-- 13900円コース -->
-  <!-- ====================== -->
-
-  <div id="course13900" class="menu-page">
-
-
-    <div class="jp">
-
-      <h2>9月のコース</h2>
-      <div class="price">13,900円</div>
-
-
-      <div class="special-item">
-        ウニ食べ比べ
-      </div>
-
-
-      <div class="category">
-        強肴
-      </div>
-
-      <div class="item">
-        蟹と菊花の煮浸し
-      </div>
-
-      <div class="item">
-        イチヂク胡麻クリーム和え
-      </div>
-
-
-      <div class="category">
-        茶碗蒸し
-      </div>
-
-      <div class="item">
-        白子の木の子餡掛けイクラのせ
-      </div>
-
-
-      <div class="category">
-        鮨
-      </div>
-
-      <div class="item">
-        イカ（炭塩）
-      </div>
-
-      <div class="item">
-        カツオ（高等葱ソース）
-      </div>
-
-      <div class="item">
-        貝（塩スダチ）
-      </div>
-
-      <div class="item">
-        生エビ（エビパウダー）
-      </div>
-
-      <div class="item">
-        島鮨
-      </div>
-
-
-      <div class="category">
-        焼き物
-      </div>
-
-      <div class="item">
-        秋鮭幽庵焼き
-      </div>
-
-
-      <div class="category">
-        揚げ物
-      </div>
-
-      <div class="item">
-        鱧の天麩羅
-      </div>
-
-
-      <div class="category">
-        香の物
-      </div>
-
-
-      <div class="category">
-        鮨
-      </div>
-
-      <div class="item">
-        赤身
-      </div>
-
-      <div class="item">
-        中トロ
-      </div>
-
-      <div class="item">
-        白身の昆布〆
-      </div>
-
-      <div class="item">
-        コハダ
-      </div>
-
-      <div class="item">
-        トロタクおはぎ
-      </div>
-
-      <div class="item">
-        穴子
-      </div>
-
-      <div class="item">
-        玉子
-      </div>
-
-
-      <div class="category">
-        お椀
-      </div>
-
-
-      <div class="category">
-        甘味
-      </div>
-
-    </div>
-
-
-
-    <div class="en" style="display:none;">
-
-      <h2>September Course</h2>
-      <div class="price">¥13,900</div>
-
-
-      <div class="special-item">
-        Sea Urchin Tasting
-      </div>
-
-
-      <div class="category">
-        Appetizers
-      </div>
-
-      <div class="item">
-        Simmered Crab and Chrysanthemum
-      </div>
-
-      <div class="item">
-        Fig with Sesame Cream
-      </div>
-
-
-      <div class="category">
-        Chawanmushi
-      </div>
-
-      <div class="item">
-        Steamed Egg Custard with Shirako,
-        Mushroom Sauce and Salmon Roe
-      </div>
-
-
-      <div class="category">
-        Sushi
-      </div>
-
-      <div class="item">
-        Squid (Charcoal Salt)
-      </div>
-
-      <div class="item">
-        Bonito (Green Onion Sauce)
-      </div>
-
-      <div class="item">
-        Shellfish (Salt and Sudachi)
-      </div>
-
-      <div class="item">
-        Fresh Shrimp (Shrimp Powder)
-      </div>
-
-      <div class="item">
-        Island-style Sushi
-      </div>
-
-
-      <div class="category">
-        Grilled Dish
-      </div>
-
-      <div class="item">
-        Yuan-style Grilled Autumn Salmon
-      </div>
-
-
-      <div class="category">
-        Tempura
-      </div>
-
-      <div class="item">
-        Conger Pike Tempura
-      </div>
-
-
-      <div class="category">
-        Pickles
-      </div>
-
-
-      <div class="category">
-        Sushi
-      </div>
-
-      <div class="item">
-        Lean Tuna
-      </div>
-
-      <div class="item">
-        Medium Fatty Tuna
-      </div>
-
-      <div class="item">
-        Kelp-cured White Fish
-      </div>
-
-      <div class="item">
-        Gizzard Shad
-      </div>
-
-      <div class="item">
-        Toro-Taku Ohagi
-      </div>
-
-      <div class="item">
-        Conger Eel
-      </div>
-
-      <div class="item">
-        Japanese Omelet
-      </div>
-
-
-      <div class="category">
-        Soup
-      </div>
-
-
-      <div class="category">
-        Dessert
-      </div>
-
-    </div>
-
-
-    <button class="back-button"
-            onclick="goHome()">
-
-      ← 戻る / Back
-
-    </button>
-
-  </div>
-
-
-
-  <!-- ====================== -->
-  <!-- 16900円コース -->
-  <!-- ====================== -->
-
-  <div id="course16900" class="menu-page">
-
-
-    <div class="jp">
-
-      <h2>9月のコース</h2>
-      <div class="price">16,900円</div>
-
-
-      <div class="special-item">
-        ウニ食べ比べ
-      </div>
-
-
-      <div class="category">
-        強肴
-      </div>
-
-      <div class="item">
-        蟹と菊花の煮浸し
-      </div>
-
-      <div class="item">
-        イチヂク胡麻クリーム和え
-      </div>
-
-
-      <div class="category">
-        茶碗蒸し
-      </div>
-
-      <div class="item">
-        白子の木の子餡掛けイクラのせ
-      </div>
-
-
-      <div class="category">
-        鮨
-      </div>
-
-      <div class="item">
-        イカ（炭塩）
-      </div>
-
-      <div class="item">
-        カツオ（高等葱ソース）
-      </div>
-
-      <div class="item">
-        貝（塩スダチ）
-      </div>
-
-      <div class="item">
-        生エビ（エビパウダー）
-      </div>
-
-      <div class="item">
-        島鮨
-      </div>
-
-
-      <div class="category">
-        焼き物
-      </div>
-
-      <div class="item">
-        秋鮭幽庵焼き
-      </div>
-
-
-      <div class="category">
-        揚げ物
-      </div>
-
-      <div class="item">
-        鱧の天麩羅
-      </div>
-
-
-      <div class="special-item">
-        鮑の酒蒸し 肝ソース
-      </div>
-
-
-      <div class="category">
-        香の物
-      </div>
-
-
-      <div class="category">
-        鮨
-      </div>
-
-      <div class="item">
-        赤身
-      </div>
-
-      <div class="item">
-        中トロ
-      </div>
-
-      <div class="item">
-        白身の昆布〆
-      </div>
-
-      <div class="item">
-        コハダ
-      </div>
-
-      <div class="item">
-        トロタクおはぎ
-      </div>
-
-      <div class="item">
-        穴子
-      </div>
-
-      <div class="item">
-        玉子
-      </div>
-
-
-      <div class="category">
-        お椀
-      </div>
-
-
-      <div class="category">
-        甘味
-      </div>
-
-    </div>
-
-
-
-    <div class="en" style="display:none;">
-
-      <h2>September Course</h2>
-      <div class="price">¥16,900</div>
-
-
-      <div class="special-item">
-        Sea Urchin Tasting
-      </div>
-
-
-      <div class="category">
-        Appetizers
-      </div>
-
-      <div class="item">
-        Simmered Crab and Chrysanthemum
-      </div>
-
-      <div class="item">
-        Fig with Sesame Cream
-      </div>
-
-
-      <div class="category">
-        Chawanmushi
-      </div>
-
-      <div class="item">
-        Steamed Egg Custard with Shirako,
-        Mushroom Sauce and Salmon Roe
-      </div>
-
-
-      <div class="category">
-        Sushi
-      </div>
-
-      <div class="item">
-        Squid (Charcoal Salt)
-      </div>
-
-      <div class="item">
-        Bonito (Green Onion Sauce)
-      </div>
-
-      <div class="item">
-        Shellfish (Salt and Sudachi)
-      </div>
-
-      <div class="item">
-        Fresh Shrimp (Shrimp Powder)
-      </div>
-
-      <div class="item">
-        Island-style Sushi
-      </div>
-
-
-      <div class="category">
-        Grilled Dish
-      </div>
-
-      <div class="item">
-        Yuan-style Grilled Autumn Salmon
-      </div>
-
-
-      <div class="category">
-        Tempura
-      </div>
-
-      <div class="item">
-        Conger Pike Tempura
-      </div>
-
-
-      <div class="special-item">
-        Sake-steamed Abalone
-        with Liver Sauce
-      </div>
-
-
-      <div class="category">
-        Pickles
-      </div>
-
-
-      <div class="category">
-        Sushi
-      </div>
-
-      <div class="item">
-        Lean Tuna
-      </div>
-
-      <div class="item">
-        Medium Fatty Tuna
-      </div>
-
-      <div class="item">
-        Kelp-cured White Fish
-      </div>
-
-      <div class="item">
-        Gizzard Shad
-      </div>
-
-      <div class="item">
-        Toro-Taku Ohagi
-      </div>
-
-      <div class="item">
-        Conger Eel
-      </div>
-
-      <div class="item">
-        Japanese Omelet
-      </div>
-
-
-      <div class="category">
-        Soup
-      </div>
-
-
-      <div class="category">
-        Dessert
-      </div>
-
-    </div>
-
-
-    <button class="back-button"
-            onclick="goHome()">
-
-      ← 戻る / Back
-
-    </button>
-
-  </div>
-
-
-
-  <!-- ====================== -->
-  <!-- ドリンク -->
-  <!-- ====================== -->
-
-  <div id="drink" class="menu-page">
-
-
-    <div class="jp">
-
-      <h2>ドリンクメニュー</h2>
-
-      <div class="category">
-        ドリンク
-      </div>
-
-      <div class="item">
-        ドリンクメニュー準備中
-      </div>
-
-    </div>
-
-
-    <div class="en" style="display:none;">
-
-      <h2>Drinks</h2>
-
-      <div class="category">
-        Drinks
-      </div>
-
-      <div class="item">
-        Drink menu coming soon
-      </div>
-
-    </div>
-
-
-    <button class="back-button"
-            onclick="goHome()">
-
-      ← 戻る / Back
-
-    </button>
-
-  </div>
-
-
-
-  <!-- JavaScript -->
 
   <script>
-
     let currentLanguage = "jp";
 
-
     function setLanguage(language) {
-
       currentLanguage = language;
 
-
       document.querySelectorAll(".jp").forEach(function(element) {
-
-        element.style.display =
-          language === "jp" ? "block" : "none";
-
+        element.style.display = language === "jp" ? "block" : "none";
       });
-
 
       document.querySelectorAll(".en").forEach(function(element) {
-
-        element.style.display =
-          language === "en" ? "block" : "none";
-
+        element.style.display = language === "en" ? "block" : "none";
       });
-
     }
 
-
-
     function showMenu(menuId) {
-
       document.getElementById("home").style.display = "none";
 
-
       document.querySelectorAll(".menu-page").forEach(function(menu) {
-
         menu.style.display = "none";
-
       });
-
 
       document.getElementById(menuId).style.display = "block";
 
-
       setLanguage(currentLanguage);
-
-
       window.scrollTo(0, 0);
-
     }
 
-
-
     function goHome() {
-
       document.querySelectorAll(".menu-page").forEach(function(menu) {
-
         menu.style.display = "none";
-
       });
-
 
       document.getElementById("home").style.display = "block";
 
-
       setLanguage(currentLanguage);
-
-
       window.scrollTo(0, 0);
-
     }
-
   </script>
 
-
 </body>
-
 </html>
