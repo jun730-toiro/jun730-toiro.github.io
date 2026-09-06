@@ -4,9 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>お品書き</title>
 
   <style>
+
     body {
       margin: 0;
       padding: 30px 20px 60px;
@@ -20,13 +22,19 @@
       font-size: 30px;
       font-weight: normal;
       letter-spacing: 4px;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     h2 {
       text-align: center;
-      font-size: 24px;
+      font-size: 25px;
       font-weight: normal;
+      margin-bottom: 5px;
+    }
+
+    .price {
+      text-align: center;
+      font-size: 20px;
       margin-bottom: 30px;
     }
 
@@ -36,7 +44,7 @@
     }
 
     .language button {
-      padding: 8px 18px;
+      padding: 9px 20px;
       margin: 0 5px;
       font-size: 15px;
       border: 1px solid #999;
@@ -53,18 +61,14 @@
     .select-button {
       display: block;
       width: 100%;
-      margin: 15px 0;
-      padding: 20px;
+      margin: 16px 0;
+      padding: 22px 15px;
       font-size: 20px;
       font-family: inherit;
       background: white;
       border: 1px solid #999;
       border-radius: 8px;
       cursor: pointer;
-    }
-
-    .select-button:hover {
-      background: #f5f5f5;
     }
 
     .menu-page {
@@ -75,10 +79,10 @@
 
     .category {
       text-align: center;
-      font-size: 21px;
+      font-size: 20px;
       font-weight: bold;
       margin-top: 35px;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
       padding-bottom: 7px;
       border-bottom: 1px solid #aaa;
     }
@@ -90,10 +94,17 @@
       margin: 12px 0;
     }
 
+    .special-item {
+      text-align: center;
+      font-size: 19px;
+      margin: 32px 0 15px;
+      font-weight: bold;
+    }
+
     .back-button {
       display: block;
-      margin: 40px auto 0;
-      padding: 10px 25px;
+      margin: 45px auto 0;
+      padding: 11px 28px;
       font-size: 16px;
       font-family: inherit;
       background: white;
@@ -101,267 +112,1030 @@
       border-radius: 6px;
       cursor: pointer;
     }
+
   </style>
+
 </head>
 
 <body>
 
+
   <h1>お品書き</h1>
 
+
+  <!-- 言語切り替え -->
+
   <div class="language">
-    <button onclick="setLanguage('jp')">日本語</button>
-    <button onclick="setLanguage('en')">English</button>
+
+    <button onclick="setLanguage('jp')">
+      日本語
+    </button>
+
+    <button onclick="setLanguage('en')">
+      English
+    </button>
+
   </div>
+
 
 
   <!-- 最初の画面 -->
+
   <div id="home" class="top-menu">
 
+
     <div class="jp">
-      <button class="select-button" onclick="showMenu('course1')">
-        コース①
+
+      <button class="select-button"
+              onclick="showMenu('course9900')">
+
+        9,900円コース
+
       </button>
 
-      <button class="select-button" onclick="showMenu('course2')">
-        コース②
+
+      <button class="select-button"
+              onclick="showMenu('course13900')">
+
+        13,900円コース
+
       </button>
 
-      <button class="select-button" onclick="showMenu('course3')">
-        コース③
+
+      <button class="select-button"
+              onclick="showMenu('course16900')">
+
+        16,900円コース
+
       </button>
 
-      <button class="select-button" onclick="showMenu('drink')">
+
+      <button class="select-button"
+              onclick="showMenu('drink')">
+
         ドリンクメニュー
+
       </button>
+
     </div>
 
+
+
     <div class="en" style="display:none;">
-      <button class="select-button" onclick="showMenu('course1')">
-        Course 1
+
+      <button class="select-button"
+              onclick="showMenu('course9900')">
+
+        ¥9,900 Course
+
       </button>
 
-      <button class="select-button" onclick="showMenu('course2')">
-        Course 2
+
+      <button class="select-button"
+              onclick="showMenu('course13900')">
+
+        ¥13,900 Course
+
       </button>
 
-      <button class="select-button" onclick="showMenu('course3')">
-        Course 3
+
+      <button class="select-button"
+              onclick="showMenu('course16900')">
+
+        ¥16,900 Course
+
       </button>
 
-      <button class="select-button" onclick="showMenu('drink')">
+
+      <button class="select-button"
+              onclick="showMenu('drink')">
+
         Drinks
+
       </button>
+
     </div>
 
   </div>
 
 
-  <!-- コース① -->
-  <div id="course1" class="menu-page">
+
+  <!-- ====================== -->
+  <!-- 9900円コース -->
+  <!-- ====================== -->
+
+  <div id="course9900" class="menu-page">
+
+
+    <!-- 日本語 -->
 
     <div class="jp">
 
-      <h2>コース①</h2>
+      <h2>9月のコース</h2>
+      <div class="price">9,900円</div>
+
 
       <div class="category">強肴</div>
-      <div class="item">蟹と菊花の煮浸し</div>
-      <div class="item">イチヂク胡麻クリーム和え</div>
 
-      <div class="category">茶碗蒸し</div>
-      <div class="item">白子の木の子餡掛けイクラのせ</div>
-
-      <div class="category">鮨</div>
-      <div class="item">イカ（炭塩）</div>
-      <div class="item">カツオ（高等葱ソース）</div>
-      <div class="item">貝（塩スダチ）</div>
-      <div class="item">生エビ（エビパウダー）</div>
-      <div class="item">島鮨</div>
-
-      <div class="category">焼き物</div>
-      <div class="item">秋鮭幽庵焼き</div>
-
-      <div class="category">鮨</div>
-      <div class="item">赤身</div>
-      <div class="item">中トロ</div>
-      <div class="item">白身の昆布〆</div>
-      <div class="item">コハダ</div>
-      <div class="item">トロタクおはぎ</div>
-      <div class="item">イクラの小丼（ウニ添え）</div>
-      <div class="item">玉子</div>
-
-      <div class="category">お椀</div>
-
-      <div class="category">甘味</div>
-
-    </div>
-
-
-    <div class="en" style="display:none;">
-
-      <h2>Course 1</h2>
-
-      <div class="category">Appetizers</div>
-      <div class="item">Simmered Crab and Chrysanthemum</div>
-      <div class="item">Fresh Fig with Sesame Cream</div>
-
-      <div class="category">Chawanmushi</div>
       <div class="item">
-        Steamed Egg Custard with Shirako, Mushroom Sauce and Salmon Roe
+        蟹と菊花の煮浸し
       </div>
 
-      <div class="category">Sushi</div>
-      <div class="item">Squid (Charcoal Salt)</div>
-      <div class="item">Bonito (Green Onion Sauce)</div>
-      <div class="item">Shellfish (Salt and Sudachi)</div>
-      <div class="item">Fresh Shrimp (Shrimp Powder)</div>
-      <div class="item">Island-style Sushi</div>
+      <div class="item">
+        イチヂク胡麻クリーム和え
+      </div>
 
-      <div class="category">Grilled Dish</div>
-      <div class="item">Yuan-style Grilled Autumn Salmon</div>
 
-      <div class="category">Sushi</div>
-      <div class="item">Lean Tuna</div>
-      <div class="item">Medium Fatty Tuna</div>
-      <div class="item">Kelp-cured White Fish</div>
-      <div class="item">Gizzard Shad</div>
-      <div class="item">Toro-Taku Ohagi</div>
-      <div class="item">Salmon Roe Rice Bowl with Sea Urchin</div>
-      <div class="item">Japanese Omelet</div>
+      <div class="category">
+        茶碗蒸し
+      </div>
 
-      <div class="category">Soup</div>
+      <div class="item">
+        白子の木の子餡掛けイクラのせ
+      </div>
 
-      <div class="category">Dessert</div>
+
+      <div class="category">
+        鮨
+      </div>
+
+      <div class="item">
+        イカ（炭塩）
+      </div>
+
+      <div class="item">
+        カツオ（高等葱ソース）
+      </div>
+
+      <div class="item">
+        貝（塩スダチ）
+      </div>
+
+      <div class="item">
+        生エビ（エビパウダー）
+      </div>
+
+      <div class="item">
+        島鮨
+      </div>
+
+
+      <div class="category">
+        焼き物
+      </div>
+
+      <div class="item">
+        秋鮭幽庵焼き
+      </div>
+
+
+      <div class="category">
+        鮨
+      </div>
+
+      <div class="item">
+        赤身
+      </div>
+
+      <div class="item">
+        中トロ
+      </div>
+
+      <div class="item">
+        白身の昆布〆
+      </div>
+
+      <div class="item">
+        コハダ
+      </div>
+
+      <div class="item">
+        トロタクおはぎ
+      </div>
+
+      <div class="item">
+        イクラの小丼（ウニ添え）
+      </div>
+
+      <div class="item">
+        玉子
+      </div>
+
+
+      <div class="category">
+        お椀
+      </div>
+
+
+      <div class="category">
+        甘味
+      </div>
 
     </div>
 
-    <button class="back-button" onclick="goHome()">← 戻る / Back</button>
-  </div>
 
 
-  <!-- コース② -->
-  <div id="course2" class="menu-page">
-
-    <div class="jp">
-      <h2>コース②</h2>
-
-      <div class="category">お品書き</div>
-      <div class="item">ここにコース②を入力</div>
-    </div>
+    <!-- English -->
 
     <div class="en" style="display:none;">
-      <h2>Course 2</h2>
 
-      <div class="category">Menu</div>
-      <div class="item">Course 2 menu will be shown here.</div>
+      <h2>September Course</h2>
+      <div class="price">¥9,900</div>
+
+
+      <div class="category">
+        Appetizers
+      </div>
+
+      <div class="item">
+        Simmered Crab and Chrysanthemum
+      </div>
+
+      <div class="item">
+        Fig with Sesame Cream
+      </div>
+
+
+      <div class="category">
+        Chawanmushi
+      </div>
+
+      <div class="item">
+        Steamed Egg Custard with Shirako,
+        Mushroom Sauce and Salmon Roe
+      </div>
+
+
+      <div class="category">
+        Sushi
+      </div>
+
+      <div class="item">
+        Squid (Charcoal Salt)
+      </div>
+
+      <div class="item">
+        Bonito (Green Onion Sauce)
+      </div>
+
+      <div class="item">
+        Shellfish (Salt and Sudachi)
+      </div>
+
+      <div class="item">
+        Fresh Shrimp (Shrimp Powder)
+      </div>
+
+      <div class="item">
+        Island-style Sushi
+      </div>
+
+
+      <div class="category">
+        Grilled Dish
+      </div>
+
+      <div class="item">
+        Yuan-style Grilled Autumn Salmon
+      </div>
+
+
+      <div class="category">
+        Sushi
+      </div>
+
+      <div class="item">
+        Lean Tuna
+      </div>
+
+      <div class="item">
+        Medium Fatty Tuna
+      </div>
+
+      <div class="item">
+        Kelp-cured White Fish
+      </div>
+
+      <div class="item">
+        Gizzard Shad
+      </div>
+
+      <div class="item">
+        Toro-Taku Ohagi
+      </div>
+
+      <div class="item">
+        Mini Salmon Roe Rice Bowl
+        with Sea Urchin
+      </div>
+
+      <div class="item">
+        Japanese Omelet
+      </div>
+
+
+      <div class="category">
+        Soup
+      </div>
+
+
+      <div class="category">
+        Dessert
+      </div>
+
     </div>
 
-    <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+
+    <button class="back-button"
+            onclick="goHome()">
+
+      ← 戻る / Back
+
+    </button>
+
   </div>
 
 
-  <!-- コース③ -->
-  <div id="course3" class="menu-page">
+
+  <!-- ====================== -->
+  <!-- 13900円コース -->
+  <!-- ====================== -->
+
+  <div id="course13900" class="menu-page">
+
 
     <div class="jp">
-      <h2>コース③</h2>
 
-      <div class="category">お品書き</div>
-      <div class="item">ここにコース③を入力</div>
+      <h2>9月のコース</h2>
+      <div class="price">13,900円</div>
+
+
+      <div class="special-item">
+        ウニ食べ比べ
+      </div>
+
+
+      <div class="category">
+        強肴
+      </div>
+
+      <div class="item">
+        蟹と菊花の煮浸し
+      </div>
+
+      <div class="item">
+        イチヂク胡麻クリーム和え
+      </div>
+
+
+      <div class="category">
+        茶碗蒸し
+      </div>
+
+      <div class="item">
+        白子の木の子餡掛けイクラのせ
+      </div>
+
+
+      <div class="category">
+        鮨
+      </div>
+
+      <div class="item">
+        イカ（炭塩）
+      </div>
+
+      <div class="item">
+        カツオ（高等葱ソース）
+      </div>
+
+      <div class="item">
+        貝（塩スダチ）
+      </div>
+
+      <div class="item">
+        生エビ（エビパウダー）
+      </div>
+
+      <div class="item">
+        島鮨
+      </div>
+
+
+      <div class="category">
+        焼き物
+      </div>
+
+      <div class="item">
+        秋鮭幽庵焼き
+      </div>
+
+
+      <div class="category">
+        揚げ物
+      </div>
+
+      <div class="item">
+        鱧の天麩羅
+      </div>
+
+
+      <div class="category">
+        香の物
+      </div>
+
+
+      <div class="category">
+        鮨
+      </div>
+
+      <div class="item">
+        赤身
+      </div>
+
+      <div class="item">
+        中トロ
+      </div>
+
+      <div class="item">
+        白身の昆布〆
+      </div>
+
+      <div class="item">
+        コハダ
+      </div>
+
+      <div class="item">
+        トロタクおはぎ
+      </div>
+
+      <div class="item">
+        穴子
+      </div>
+
+      <div class="item">
+        玉子
+      </div>
+
+
+      <div class="category">
+        お椀
+      </div>
+
+
+      <div class="category">
+        甘味
+      </div>
+
     </div>
+
+
 
     <div class="en" style="display:none;">
-      <h2>Course 3</h2>
 
-      <div class="category">Menu</div>
-      <div class="item">Course 3 menu will be shown here.</div>
+      <h2>September Course</h2>
+      <div class="price">¥13,900</div>
+
+
+      <div class="special-item">
+        Sea Urchin Tasting
+      </div>
+
+
+      <div class="category">
+        Appetizers
+      </div>
+
+      <div class="item">
+        Simmered Crab and Chrysanthemum
+      </div>
+
+      <div class="item">
+        Fig with Sesame Cream
+      </div>
+
+
+      <div class="category">
+        Chawanmushi
+      </div>
+
+      <div class="item">
+        Steamed Egg Custard with Shirako,
+        Mushroom Sauce and Salmon Roe
+      </div>
+
+
+      <div class="category">
+        Sushi
+      </div>
+
+      <div class="item">
+        Squid (Charcoal Salt)
+      </div>
+
+      <div class="item">
+        Bonito (Green Onion Sauce)
+      </div>
+
+      <div class="item">
+        Shellfish (Salt and Sudachi)
+      </div>
+
+      <div class="item">
+        Fresh Shrimp (Shrimp Powder)
+      </div>
+
+      <div class="item">
+        Island-style Sushi
+      </div>
+
+
+      <div class="category">
+        Grilled Dish
+      </div>
+
+      <div class="item">
+        Yuan-style Grilled Autumn Salmon
+      </div>
+
+
+      <div class="category">
+        Tempura
+      </div>
+
+      <div class="item">
+        Conger Pike Tempura
+      </div>
+
+
+      <div class="category">
+        Pickles
+      </div>
+
+
+      <div class="category">
+        Sushi
+      </div>
+
+      <div class="item">
+        Lean Tuna
+      </div>
+
+      <div class="item">
+        Medium Fatty Tuna
+      </div>
+
+      <div class="item">
+        Kelp-cured White Fish
+      </div>
+
+      <div class="item">
+        Gizzard Shad
+      </div>
+
+      <div class="item">
+        Toro-Taku Ohagi
+      </div>
+
+      <div class="item">
+        Conger Eel
+      </div>
+
+      <div class="item">
+        Japanese Omelet
+      </div>
+
+
+      <div class="category">
+        Soup
+      </div>
+
+
+      <div class="category">
+        Dessert
+      </div>
+
     </div>
 
-    <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+
+    <button class="back-button"
+            onclick="goHome()">
+
+      ← 戻る / Back
+
+    </button>
+
   </div>
 
 
+
+  <!-- ====================== -->
+  <!-- 16900円コース -->
+  <!-- ====================== -->
+
+  <div id="course16900" class="menu-page">
+
+
+    <div class="jp">
+
+      <h2>9月のコース</h2>
+      <div class="price">16,900円</div>
+
+
+      <div class="special-item">
+        ウニ食べ比べ
+      </div>
+
+
+      <div class="category">
+        強肴
+      </div>
+
+      <div class="item">
+        蟹と菊花の煮浸し
+      </div>
+
+      <div class="item">
+        イチヂク胡麻クリーム和え
+      </div>
+
+
+      <div class="category">
+        茶碗蒸し
+      </div>
+
+      <div class="item">
+        白子の木の子餡掛けイクラのせ
+      </div>
+
+
+      <div class="category">
+        鮨
+      </div>
+
+      <div class="item">
+        イカ（炭塩）
+      </div>
+
+      <div class="item">
+        カツオ（高等葱ソース）
+      </div>
+
+      <div class="item">
+        貝（塩スダチ）
+      </div>
+
+      <div class="item">
+        生エビ（エビパウダー）
+      </div>
+
+      <div class="item">
+        島鮨
+      </div>
+
+
+      <div class="category">
+        焼き物
+      </div>
+
+      <div class="item">
+        秋鮭幽庵焼き
+      </div>
+
+
+      <div class="category">
+        揚げ物
+      </div>
+
+      <div class="item">
+        鱧の天麩羅
+      </div>
+
+
+      <div class="special-item">
+        鮑の酒蒸し 肝ソース
+      </div>
+
+
+      <div class="category">
+        香の物
+      </div>
+
+
+      <div class="category">
+        鮨
+      </div>
+
+      <div class="item">
+        赤身
+      </div>
+
+      <div class="item">
+        中トロ
+      </div>
+
+      <div class="item">
+        白身の昆布〆
+      </div>
+
+      <div class="item">
+        コハダ
+      </div>
+
+      <div class="item">
+        トロタクおはぎ
+      </div>
+
+      <div class="item">
+        穴子
+      </div>
+
+      <div class="item">
+        玉子
+      </div>
+
+
+      <div class="category">
+        お椀
+      </div>
+
+
+      <div class="category">
+        甘味
+      </div>
+
+    </div>
+
+
+
+    <div class="en" style="display:none;">
+
+      <h2>September Course</h2>
+      <div class="price">¥16,900</div>
+
+
+      <div class="special-item">
+        Sea Urchin Tasting
+      </div>
+
+
+      <div class="category">
+        Appetizers
+      </div>
+
+      <div class="item">
+        Simmered Crab and Chrysanthemum
+      </div>
+
+      <div class="item">
+        Fig with Sesame Cream
+      </div>
+
+
+      <div class="category">
+        Chawanmushi
+      </div>
+
+      <div class="item">
+        Steamed Egg Custard with Shirako,
+        Mushroom Sauce and Salmon Roe
+      </div>
+
+
+      <div class="category">
+        Sushi
+      </div>
+
+      <div class="item">
+        Squid (Charcoal Salt)
+      </div>
+
+      <div class="item">
+        Bonito (Green Onion Sauce)
+      </div>
+
+      <div class="item">
+        Shellfish (Salt and Sudachi)
+      </div>
+
+      <div class="item">
+        Fresh Shrimp (Shrimp Powder)
+      </div>
+
+      <div class="item">
+        Island-style Sushi
+      </div>
+
+
+      <div class="category">
+        Grilled Dish
+      </div>
+
+      <div class="item">
+        Yuan-style Grilled Autumn Salmon
+      </div>
+
+
+      <div class="category">
+        Tempura
+      </div>
+
+      <div class="item">
+        Conger Pike Tempura
+      </div>
+
+
+      <div class="special-item">
+        Sake-steamed Abalone
+        with Liver Sauce
+      </div>
+
+
+      <div class="category">
+        Pickles
+      </div>
+
+
+      <div class="category">
+        Sushi
+      </div>
+
+      <div class="item">
+        Lean Tuna
+      </div>
+
+      <div class="item">
+        Medium Fatty Tuna
+      </div>
+
+      <div class="item">
+        Kelp-cured White Fish
+      </div>
+
+      <div class="item">
+        Gizzard Shad
+      </div>
+
+      <div class="item">
+        Toro-Taku Ohagi
+      </div>
+
+      <div class="item">
+        Conger Eel
+      </div>
+
+      <div class="item">
+        Japanese Omelet
+      </div>
+
+
+      <div class="category">
+        Soup
+      </div>
+
+
+      <div class="category">
+        Dessert
+      </div>
+
+    </div>
+
+
+    <button class="back-button"
+            onclick="goHome()">
+
+      ← 戻る / Back
+
+    </button>
+
+  </div>
+
+
+
+  <!-- ====================== -->
   <!-- ドリンク -->
+  <!-- ====================== -->
+
   <div id="drink" class="menu-page">
 
+
     <div class="jp">
+
       <h2>ドリンクメニュー</h2>
 
-      <div class="category">ビール</div>
-      <div class="item">ここにドリンクを入力</div>
+      <div class="category">
+        ドリンク
+      </div>
 
-      <div class="category">日本酒</div>
-      <div class="item">ここにドリンクを入力</div>
+      <div class="item">
+        ドリンクメニュー準備中
+      </div>
 
-      <div class="category">ソフトドリンク</div>
-      <div class="item">ここにドリンクを入力</div>
     </div>
+
 
     <div class="en" style="display:none;">
+
       <h2>Drinks</h2>
 
-      <div class="category">Beer</div>
-      <div class="item">Drinks will be shown here.</div>
+      <div class="category">
+        Drinks
+      </div>
 
-      <div class="category">Sake</div>
-      <div class="item">Drinks will be shown here.</div>
+      <div class="item">
+        Drink menu coming soon
+      </div>
 
-      <div class="category">Soft Drinks</div>
-      <div class="item">Drinks will be shown here.</div>
     </div>
 
-    <button class="back-button" onclick="goHome()">← 戻る / Back</button>
+
+    <button class="back-button"
+            onclick="goHome()">
+
+      ← 戻る / Back
+
+    </button>
+
   </div>
 
+
+
+  <!-- JavaScript -->
 
   <script>
 
     let currentLanguage = "jp";
 
+
     function setLanguage(language) {
 
       currentLanguage = language;
 
+
       document.querySelectorAll(".jp").forEach(function(element) {
-        element.style.display = language === "jp" ? "block" : "none";
+
+        element.style.display =
+          language === "jp" ? "block" : "none";
+
       });
 
+
       document.querySelectorAll(".en").forEach(function(element) {
-        element.style.display = language === "en" ? "block" : "none";
+
+        element.style.display =
+          language === "en" ? "block" : "none";
+
       });
 
     }
+
 
 
     function showMenu(menuId) {
 
       document.getElementById("home").style.display = "none";
 
+
       document.querySelectorAll(".menu-page").forEach(function(menu) {
+
         menu.style.display = "none";
+
       });
+
 
       document.getElementById(menuId).style.display = "block";
 
+
       setLanguage(currentLanguage);
 
+
       window.scrollTo(0, 0);
+
     }
+
 
 
     function goHome() {
 
       document.querySelectorAll(".menu-page").forEach(function(menu) {
+
         menu.style.display = "none";
+
       });
+
 
       document.getElementById("home").style.display = "block";
 
+
       setLanguage(currentLanguage);
 
+
       window.scrollTo(0, 0);
+
     }
 
   </script>
+
 
 </body>
 
