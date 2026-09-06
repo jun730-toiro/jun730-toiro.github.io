@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>お品書き</title>
 
   <style>
@@ -20,8 +19,23 @@
       text-align: center;
       font-size: 28px;
       font-weight: normal;
-      margin-bottom: 40px;
+      margin-bottom: 20px;
       letter-spacing: 3px;
+    }
+
+    .button-area {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 8px 18px;
+      margin: 0 6px;
+      border: 1px solid #999;
+      background-color: white;
+      cursor: pointer;
+      border-radius: 6px;
     }
 
     .menu {
@@ -46,43 +60,38 @@
       margin: 12px 0;
     }
   </style>
-
 </head>
-
 
 <body>
 
   <h1>季節のおまかせコース</h1>
 
-  <div class="menu">
+  <div class="button-area">
+    <button onclick="showJapanese()">日本語</button>
+    <button onclick="showEnglish()">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div id="jp" class="menu">
 
     <div class="category">強肴</div>
-
     <div class="item">蟹と菊花の煮浸し</div>
     <div class="item">イチヂク胡麻クリーム和え</div>
 
-
     <div class="category">茶碗蒸し</div>
-
     <div class="item">白子の木の子餡掛けイクラのせ</div>
 
-
     <div class="category">鮨</div>
-
     <div class="item">イカ（炭塩）</div>
     <div class="item">カツオ（高等葱ソース）</div>
     <div class="item">貝（塩スダチ）</div>
     <div class="item">生エビ（エビパウダー）</div>
     <div class="item">島鮨</div>
 
-
     <div class="category">焼き物</div>
-
     <div class="item">秋鮭幽庵焼き</div>
 
-
     <div class="category">鮨</div>
-
     <div class="item">赤身</div>
     <div class="item">中トロ</div>
     <div class="item">白身の昆布〆</div>
@@ -91,13 +100,56 @@
     <div class="item">イクラの小丼（ウニ添え）</div>
     <div class="item">玉子</div>
 
-
     <div class="category">お椀</div>
 
-
     <div class="category">甘味</div>
-
   </div>
+
+  <!-- 英語 -->
+  <div id="en" class="menu" style="display: none;">
+
+    <div class="category">Appetizer</div>
+    <div class="item">Simmered Crab and Chrysanthemum</div>
+    <div class="item">Fresh Fig with Sesame Cream</div>
+
+    <div class="category">Chawanmushi</div>
+    <div class="item">Steamed Egg Custard with Shirako, Mushroom Ankake Sauce, and Salmon Roe</div>
+
+    <div class="category">Sushi</div>
+    <div class="item">Squid (Charcoal Salt)</div>
+    <div class="item">Bonito (Green Onion Sauce)</div>
+    <div class="item">Shellfish (Salt and Sudachi)</div>
+    <div class="item">Fresh Shrimp (Shrimp Powder)</div>
+    <div class="item">Island-style Sushi</div>
+
+    <div class="category">Grilled Dish</div>
+    <div class="item">Yuan-style Grilled Autumn Salmon</div>
+
+    <div class="category">Sushi</div>
+    <div class="item">Lean Tuna</div>
+    <div class="item">Medium Fatty Tuna</div>
+    <div class="item">White Fish Cured with Kelp</div>
+    <div class="item">Gizzard Shad</div>
+    <div class="item">Toro-Taku Ohagi</div>
+    <div class="item">Mini Salmon Roe Rice Bowl with Sea Urchin</div>
+    <div class="item">Japanese Omelet</div>
+
+    <div class="category">Soup</div>
+
+    <div class="category">Dessert</div>
+  </div>
+
+  <script>
+    function showJapanese() {
+      document.getElementById("jp").style.display = "block";
+      document.getElementById("en").style.display = "none";
+    }
+
+    function showEnglish() {
+      document.getElementById("jp").style.display = "none";
+      document.getElementById("en").style.display = "block";
+    }
+  </script>
 
 </body>
 
